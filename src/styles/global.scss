@@ -1,0 +1,73 @@
+@use 'reset';
+@use 'variables' as *;
+
+body {
+  font-family: $font-family;
+  color: $text-primary;
+  background: $light-bg;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+// Utility classes
+.section-label {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $primary;
+  background: rgba($primary, 0.1);
+  padding: $spacing-1 $spacing-3;
+  border-radius: $radius-full;
+  margin-bottom: $spacing-4;
+}
+
+.section-title {
+  font-size: $font-size-3xl;
+  font-weight: 800;
+  line-height: 1.2;
+  color: $text-primary;
+  margin-bottom: $spacing-4;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: $font-size-5xl;
+  }
+}
+
+.section-subtitle {
+  font-size: $font-size-lg;
+  color: $text-secondary;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+// Scroll reveal base (applied by GSAP)
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

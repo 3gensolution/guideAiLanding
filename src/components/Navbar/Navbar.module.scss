@@ -1,0 +1,261 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: $z-navbar + 1;
+  padding: $spacing-4 0;
+  transition: background $transition-base, box-shadow $transition-base,
+    padding $transition-base;
+}
+
+.scrolled {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: $shadow-md;
+  padding: $spacing-3 0;
+
+  .navLink {
+    color: $text-primary;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .logoText {
+    color: $text-primary;
+  }
+
+  .hamburger span {
+    background: $text-primary;
+  }
+}
+
+.container {
+  @include container;
+  @include flex-between;
+}
+
+// ---------- Logo ----------
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  background: $gradient-primary;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: $text-on-dark;
+    border-radius: $radius-full;
+  }
+}
+
+.logoText {
+  font-family: $font-family;
+  font-weight: 700;
+  font-size: $font-size-xl;
+  color: $text-primary;
+  transition: color $transition-base;
+
+  span {
+    @include gradient-text;
+  }
+}
+
+// ---------- Desktop nav ----------
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: $spacing-8;
+
+  @include md {
+    display: flex;
+  }
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: $spacing-6;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include lg {
+    gap: $spacing-8;
+  }
+}
+
+.navLink {
+  @include link-underline($primary);
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $text-primary;
+  transition: color $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+// ---------- Actions (login + CTA) ----------
+.actions {
+  display: none;
+  align-items: center;
+  gap: $spacing-4;
+
+  @include md {
+    display: flex;
+  }
+}
+
+.ctaButton {
+  @include button-primary;
+
+  &:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, $primary-light, $accent);
+    box-shadow: $shadow-glow;
+  }
+}
+
+// ---------- Hamburger ----------
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-2;
+  z-index: $z-navbar + 1;
+
+  @include md {
+    display: none;
+  }
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: $text-primary;
+    border-radius: 2px;
+    transition: transform $transition-base, opacity $transition-base,
+      background $transition-base;
+    transform-origin: center;
+  }
+}
+
+.hamburgerOpen {
+  span {
+    background: $text-on-dark;
+  }
+
+  span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  span:nth-child(2) {
+    opacity: 0;
+  }
+
+  span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+// ---------- Mobile overlay ----------
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: $z-navbar;
+  background: rgba($dark-bg, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-8;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-slow, visibility $transition-slow;
+
+  @include md {
+    display: none;
+  }
+}
+
+.mobileOverlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-6;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobileNavLink {
+  font-family: $font-family;
+  font-size: $font-size-2xl;
+  font-weight: 600;
+  color: $text-on-dark;
+  text-decoration: none;
+  transition: color $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-4;
+  margin-top: $spacing-4;
+}
+
+.mobileCta {
+  @include button-primary;
+  font-size: $font-size-base;
+  padding: $spacing-4 $spacing-8;
+
+  &:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, $primary-light, $accent);
+    box-shadow: $shadow-glow;
+  }
+}

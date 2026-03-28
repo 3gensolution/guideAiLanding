@@ -1,0 +1,186 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ─── Hero Section ────────────────────────────────────────────
+.hero {
+  position: relative;
+  background: $light-surface;
+  overflow: hidden;
+  text-align: center;
+  padding-top: $spacing-16;
+  padding-bottom: $spacing-12;
+
+  @include md {
+    padding-top: $spacing-20;
+    padding-bottom: $spacing-16;
+  }
+
+  @include lg {
+    padding-top: $spacing-24;
+    padding-bottom: $spacing-20;
+  }
+}
+
+.container {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+// ─── Floating Decorative Elements ────────────────────────────
+.floatingContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floatingElement {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+}
+
+.floatTopLeft {
+  width: 300px;
+  height: 300px;
+  background: $primary;
+  top: -80px;
+  left: -100px;
+
+  @include lg {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+.floatTopRight {
+  width: 200px;
+  height: 200px;
+  background: $accent;
+  top: 40px;
+  right: -60px;
+
+  @include lg {
+    width: 350px;
+    height: 350px;
+    top: 20px;
+  }
+}
+
+.floatBottomLeft {
+  width: 180px;
+  height: 180px;
+  background: $primary-light;
+  bottom: 60px;
+  left: 10%;
+
+  @include lg {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+// ─── Label ───────────────────────────────────────────────────
+.label {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $primary;
+  background: rgba($primary, 0.1);
+  border: 1px solid rgba($primary, 0.2);
+  padding: $spacing-1 $spacing-4;
+  border-radius: $radius-full;
+  margin-bottom: $spacing-6;
+}
+
+// ─── Headline ────────────────────────────────────────────────
+.headline {
+  font-size: $font-size-3xl;
+  font-weight: 800;
+  line-height: 1.15;
+  color: $text-primary;
+  margin-bottom: $spacing-6;
+  max-width: 800px;
+
+  @include md {
+    font-size: $font-size-4xl;
+  }
+
+  @include lg {
+    font-size: $font-size-6xl;
+    margin-bottom: $spacing-8;
+  }
+}
+
+.headlineAccent {
+  @include gradient-text;
+}
+
+// ─── Subtitle ────────────────────────────────────────────────
+.subtitle {
+  font-size: $font-size-base;
+  line-height: 1.7;
+  color: $text-secondary;
+  max-width: 640px;
+  margin-bottom: $spacing-8;
+
+  @include md {
+    font-size: $font-size-lg;
+  }
+
+  @include lg {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-10;
+  }
+}
+
+// ─── CTA Buttons ─────────────────────────────────────────────
+.ctaGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  width: 100%;
+  max-width: 400px;
+
+  @include sm {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+    width: auto;
+  }
+}
+
+.ctaPrimary {
+  @include button-primary;
+  padding: $spacing-3 $spacing-8;
+  font-size: $font-size-base;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba($primary, 0.4), 0 0 60px rgba($accent, 0.15);
+  }
+}
+
+.ctaGhost {
+  @include button-base;
+  padding: $spacing-3 $spacing-8;
+  font-size: $font-size-base;
+  background: transparent;
+  color: $text-primary;
+  border: 1px solid $card-border;
+  border-radius: $radius-full;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+    background: rgba($primary, 0.04);
+  }
+}

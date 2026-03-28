@@ -1,0 +1,139 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: $light-surface;
+  @include section-padding;
+}
+
+.container {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
+
+  @include lg {
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-12;
+  }
+}
+
+// ─── Left text column ─────────────────────────────────────────
+.textCol {
+  flex-shrink: 0;
+
+  @include lg {
+    max-width: 400px;
+  }
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $text-primary;
+  margin-bottom: $spacing-3;
+
+  @include md {
+    font-size: $font-size-3xl;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-base;
+  color: $text-secondary;
+  line-height: 1.7;
+  max-width: 360px;
+}
+
+// ─── Right carousel column ───────────────────────────────────
+.carouselCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.carouselWrapper {
+  position: relative;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: $spacing-6;
+}
+
+.carouselSlide {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-5;
+  border-radius: $radius-lg;
+  cursor: default;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.06),
+      0 0 16px var(--integration-color, rgba($primary, 0.2));
+  }
+}
+
+.iconWrapper {
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-md;
+  background: $light-bg;
+  color: $text-tertiary;
+  flex-shrink: 0;
+  transition: color $transition-base, background $transition-base, box-shadow $transition-base;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: var(--integration-color, $primary);
+  }
+
+  // .carouselSlide:hover & {
+  //   color: var(--integration-color, $primary);
+  //   box-shadow: 0 0 12px color-mix(in srgb, var(--integration-color, #{$primary}) 25%, transparent);
+  // }
+}
+
+.label {
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $text-primary;
+  white-space: nowrap;
+  user-select: none;
+}
+
+// ─── Fade overlays ────────────────────────────────────────────
+.fadeBefore,
+.fadeAfter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  z-index: 2;
+
+  @include md {
+    width: 80px;
+  }
+}
+
+.fadeBefore {
+  left: 0;
+  background: linear-gradient(to right, $light-surface, transparent);
+}
+
+.fadeAfter {
+  right: 0;
+  background: linear-gradient(to left, $light-surface, transparent);
+}

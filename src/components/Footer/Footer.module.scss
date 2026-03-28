@@ -1,0 +1,160 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ─── Footer Section ─────────────────────────────────────────
+.footer {
+  background: $dark-bg;
+  @include section-padding;
+  padding-bottom: $spacing-8;
+
+  @include md {
+    padding-bottom: $spacing-10;
+  }
+
+  @include lg {
+    padding-bottom: $spacing-12;
+  }
+}
+
+.container {
+  @include container;
+}
+
+// ─── Column Layout ──────────────────────────────────────────
+.columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-10;
+  margin-bottom: $spacing-12;
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-8;
+  }
+
+  @include lg {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: $spacing-12;
+  }
+}
+
+// ─── Brand Column ───────────────────────────────────────────
+.brandColumn {
+  max-width: 320px;
+
+  @include md {
+    grid-column: span 2;
+  }
+
+  @include lg {
+    grid-column: span 1;
+  }
+}
+
+.logo {
+  display: inline-block;
+  font-size: $font-size-xl;
+  font-weight: 800;
+  color: $text-on-dark;
+  margin-bottom: $spacing-4;
+  letter-spacing: -0.02em;
+
+  @include lg {
+    font-size: $font-size-2xl;
+  }
+}
+
+.tagline {
+  font-size: $font-size-sm;
+  line-height: 1.7;
+  color: $text-on-dark-secondary;
+}
+
+// ─── Link Columns ───────────────────────────────────────────
+.linkColumn {
+  min-width: 0;
+}
+
+.columnHeading {
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $text-on-dark-secondary;
+  margin-bottom: $spacing-4;
+
+  @include lg {
+    margin-bottom: $spacing-6;
+  }
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+}
+
+.footerLink {
+  @include link-underline(rgba(255, 255, 255, 0.6));
+  display: inline-block;
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color $transition-base;
+
+  &:hover {
+    color: $text-on-dark;
+  }
+}
+
+// ─── Divider ────────────────────────────────────────────────
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: $spacing-8;
+}
+
+// ─── Bottom Bar ─────────────────────────────────────────────
+.bottomBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-4;
+  text-align: center;
+
+  @include md {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.copyright {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
+.legalSeparator {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: $font-size-sm;
+}
+
+.legalLink {
+  @include link-underline(rgba(255, 255, 255, 0.5));
+  display: inline-block;
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color $transition-base;
+
+  &:hover {
+    color: $text-on-dark-secondary;
+  }
+}

@@ -1,0 +1,237 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ─── Pricing Section ────────────────────────────────────────
+.section {
+  background: $light-bg;
+  @include section-padding;
+}
+
+.container {
+  @include container;
+}
+
+// ─── Header ─────────────────────────────────────────────────
+.header {
+  text-align: center;
+  margin-bottom: $spacing-12;
+
+  @include lg {
+    margin-bottom: $spacing-16;
+  }
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: 800;
+  line-height: 1.2;
+  color: $text-primary;
+  margin-bottom: $spacing-4;
+
+  @include md {
+    font-size: $font-size-4xl;
+  }
+
+  @include lg {
+    font-size: $font-size-5xl;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $text-secondary;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ─── Grid ───────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-8;
+  align-items: start;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-6;
+    align-items: center;
+  }
+
+  @include lg {
+    gap: $spacing-8;
+  }
+}
+
+// ─── Card Base ──────────────────────────────────────────────
+.card {
+  position: relative;
+  background: $card-bg;
+  border: 1px solid $card-border;
+  border-radius: $radius-xl;
+  padding: $spacing-8 $spacing-6;
+  display: flex;
+  flex-direction: column;
+  transition: transform $transition-base, box-shadow $transition-base,
+    border-color $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($primary, 0.3);
+  }
+}
+
+// ─── Featured Card (Growth) ─────────────────────────────────
+.cardFeatured {
+  background: $card-bg;
+  border: 2px dashed $primary;
+  border-radius: $radius-xl;
+  padding: $spacing-10 $spacing-6;
+  box-shadow: $shadow-lg;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-xl, 0 0 30px rgba($primary, 0.15);
+  }
+
+  @include md {
+    padding: $spacing-12 $spacing-8;
+  }
+}
+
+// ─── Badge ──────────────────────────────────────────────────
+.badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $text-on-dark;
+  background: $gradient-primary;
+  padding: $spacing-1 $spacing-4;
+  border-radius: $radius-full;
+  white-space: nowrap;
+}
+
+// ─── Tier Label ─────────────────────────────────────────────
+.tierLabel {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: $spacing-3;
+}
+
+// ─── Price ──────────────────────────────────────────────────
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-1;
+  margin-bottom: $spacing-3;
+}
+
+.priceAmount {
+  font-size: $font-size-5xl;
+  font-weight: 800;
+  color: $text-primary;
+  line-height: 1;
+
+  @include lg {
+    font-size: 3.5rem;
+  }
+}
+
+.priceAmountFeatured {
+  color: $text-primary;
+}
+
+.pricePeriod {
+  font-size: $font-size-base;
+  color: $text-tertiary;
+  font-weight: 500;
+}
+
+// ─── Description ────────────────────────────────────────────
+.description {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  line-height: 1.6;
+  margin-bottom: $spacing-8;
+}
+
+// ─── Features List ──────────────────────────────────────────
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $spacing-8;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  font-size: $font-size-sm;
+  color: $text-primary;
+  line-height: 1.5;
+}
+
+.featureDisabled {
+  color: $text-tertiary;
+}
+
+.featureIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: $primary;
+}
+
+.featureIconDisabled {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: $text-tertiary;
+}
+
+// ─── CTA Buttons ────────────────────────────────────────────
+.ctaPrimary {
+  @include button-primary;
+  width: 100%;
+  padding: $spacing-3 $spacing-6;
+  font-size: $font-size-base;
+  text-align: center;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba($primary, 0.35), 0 0 60px rgba($accent, 0.12);
+  }
+}
+
+.ctaOutline {
+  @include button-base;
+  width: 100%;
+  padding: $spacing-3 $spacing-6;
+  font-size: $font-size-base;
+  text-align: center;
+  background: transparent;
+  color: $text-primary;
+  border: 1px solid $card-border;
+  border-radius: $radius-full;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+    background: rgba($primary, 0.04);
+  }
+}

@@ -1,0 +1,354 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ─── Section ─────────────────────────────────────────────
+.section {
+  @include section-padding;
+  background: $light-bg;
+}
+
+.container {
+  @include container;
+}
+
+// ─── Header ──────────────────────────────────────────────
+.header {
+  margin-bottom: $spacing-10;
+
+  @include lg {
+    margin-bottom: $spacing-16;
+  }
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: 800;
+  line-height: 1.2;
+  color: $text-primary;
+  margin-bottom: $spacing-3;
+
+  @include md {
+    font-size: $font-size-4xl;
+  }
+
+  @include lg {
+    font-size: $font-size-5xl;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-base;
+  color: $text-secondary;
+  line-height: 1.7;
+
+  @include md {
+    font-size: $font-size-lg;
+  }
+}
+
+// ─── Top row: Step 1 + Step 2 ────────────────────────────
+.topRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+  margin-bottom: $spacing-6;
+
+  @include md {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: $spacing-6;
+  }
+}
+
+// ─── Cards (Step 1 & 2) ─────────────────────────────────
+.card {
+  background: $card-bg;
+  border: 1px solid $card-border;
+  border-radius: $radius-xl;
+  padding: $spacing-6;
+  display: flex;
+  flex-direction: column;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  @include md {
+    padding: $spacing-8;
+  }
+}
+
+.cardContent {
+  margin-bottom: $spacing-6;
+}
+
+.stepBadge {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $primary;
+  margin-bottom: $spacing-3;
+}
+
+.stepTitle {
+  font-size: $font-size-xl;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: $spacing-2;
+  line-height: 1.3;
+
+  @include md {
+    font-size: $font-size-2xl;
+  }
+}
+
+.stepDescription {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  line-height: 1.7;
+
+  @include md {
+    font-size: $font-size-base;
+  }
+}
+
+.inlineCode {
+  background: rgba($primary, 0.08);
+  color: $primary;
+  padding: 0.15em 0.4em;
+  border-radius: $radius-sm;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+}
+
+// ─── Step 1: Code Block ─────────────────────────────────
+.codeBlock {
+  background: $dark-surface;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  flex: 1;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  padding: $spacing-3 $spacing-4;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.codeDot {
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-full;
+
+  &:nth-child(1) { background: #ff5f57; }
+  &:nth-child(2) { background: #febc2e; }
+  &:nth-child(3) { background: #28c840; }
+}
+
+.codeContent {
+  padding: $spacing-3 $spacing-4;
+  margin: 0;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include md {
+    padding: $spacing-4 $spacing-5;
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: $font-size-xs;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: pre;
+
+    @include md {
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+// ─── Step 2: Scan Visual ────────────────────────────────
+.scanVisual {
+  @include flex-center;
+  flex: 1;
+  padding: $spacing-4;
+
+  @include md {
+    padding: $spacing-6;
+  }
+}
+
+.scanBox {
+  @include flex-center;
+  width: 120px;
+  height: 120px;
+  border: 1.5px solid $card-border;
+  border-radius: $radius-xl;
+  background: $light-surface;
+
+  @include md {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+.scanIcon {
+  width: 48px;
+  height: 48px;
+  color: $primary;
+
+  @include md {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+// ─── Step 3: Full-width purple card ─────────────────────
+.step3Card {
+  display: flex;
+  flex-direction: column;
+  background: $primary;
+  background-image: linear-gradient(135deg, $primary 0%, $primary-dark 50%, $primary 100%);
+  border-radius: $radius-xl;
+  overflow: hidden;
+  position: relative;
+
+  @include md {
+    flex-direction: row;
+    min-height: 340px;
+  }
+}
+
+.step3Content {
+  padding: $spacing-6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1;
+
+  @include md {
+    padding: $spacing-10 $spacing-8;
+    flex: 1;
+    justify-content: center;
+    max-width: 50%;
+  }
+}
+
+.step3Badge {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: $spacing-3;
+}
+
+.step3Title {
+  font-size: $font-size-2xl;
+  font-weight: 800;
+  color: $text-on-dark;
+  margin-bottom: $spacing-3;
+  line-height: 1.2;
+
+  @include md {
+    font-size: $font-size-3xl;
+  }
+}
+
+.step3Description {
+  font-size: $font-size-sm;
+  color: $text-on-dark-secondary;
+  line-height: 1.7;
+  margin-bottom: $spacing-6;
+  max-width: 440px;
+
+  @include md {
+    font-size: $font-size-base;
+  }
+}
+
+.step3Button {
+  @include button-base;
+  background: $text-on-dark;
+  color: $primary;
+  padding: $spacing-3 $spacing-6;
+  border-radius: $radius-full;
+  font-weight: 600;
+
+  &:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.25);
+  }
+}
+
+// ─── Network / constellation visual ─────────────────────
+.step3Visual {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+
+  @include md {
+    flex: 1;
+    height: auto;
+    min-height: 280px;
+  }
+}
+
+.networkSvg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.netNode {
+  animation: nodePulse 3s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.netGlow {
+  animation: glowPulse 4s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.netLine {
+  animation: lineShimmer 5s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.04; transform: scale(1); }
+  50% { opacity: 0.1; transform: scale(1.2); }
+}
+
+@keyframes lineShimmer {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}

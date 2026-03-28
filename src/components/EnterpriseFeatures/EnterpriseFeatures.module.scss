@@ -1,0 +1,267 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ─── Section ─────────────────────────────────────────────
+.section {
+  background: $dark-bg;
+  @include section-padding;
+  overflow: hidden;
+}
+
+.container {
+  @include container;
+}
+
+// ─── Header ──────────────────────────────────────────────
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+  margin-bottom: $spacing-12;
+
+  @include lg {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: $spacing-16;
+  }
+}
+
+.headerText {
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: 800;
+  line-height: 1.15;
+  color: $text-on-dark;
+  margin-bottom: $spacing-3;
+
+  @include md {
+    font-size: $font-size-4xl;
+  }
+
+  @include lg {
+    font-size: $font-size-5xl;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $text-on-dark-secondary;
+  max-width: 440px;
+
+  @include md {
+    font-size: $font-size-lg;
+  }
+}
+
+// ─── Compliance badges ──────────────────────────────────
+.badges {
+  display: flex;
+  gap: $spacing-3;
+  flex-shrink: 0;
+
+  @include lg {
+    padding-top: $spacing-2;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $text-on-dark;
+  padding: $spacing-2 $spacing-5;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-full;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+// ─── Grid ────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-8;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-6;
+  }
+
+  @include lg {
+    gap: $spacing-8;
+  }
+}
+
+// ─── Cards ───────────────────────────────────────────────
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardVisual {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: $dark-surface;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: $radius-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: $spacing-6;
+  transition: border-color $transition-base, box-shadow $transition-base;
+
+  .card:hover & {
+    border-color: rgba($primary, 0.2);
+    box-shadow: 0 8px 24px rgba($primary, 0.1);
+  }
+}
+
+.cardTitle {
+  font-size: $font-size-xl;
+  font-weight: 700;
+  color: $text-on-dark;
+  margin-bottom: $spacing-3;
+
+  @include md {
+    font-size: $font-size-2xl;
+  }
+}
+
+.cardDescription {
+  font-size: $font-size-sm;
+  line-height: 1.7;
+  color: $text-on-dark-secondary;
+
+  @include md {
+    font-size: $font-size-base;
+  }
+}
+
+// ─── Auto-Healing: equalizer bars ───────────────────────
+.healingVisual {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 80px;
+}
+
+.healBar {
+  width: 12px;
+  border-radius: 6px;
+  background: $primary-light;
+  height: calc(80px * var(--bar-scale, 0.5));
+  animation: barPulse 1.4s ease-in-out infinite alternate;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes barPulse {
+  0% {
+    opacity: 0.5;
+    transform: scaleY(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+// ─── Rage Click: glowing dots ───────────────────────────
+.rageClickVisual {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.rageClickDot {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  background: #ef4444;
+  animation: rageClickPulse 1s ease-in-out infinite alternate;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.rageClickGlow {
+  position: absolute;
+  inset: -8px;
+  border-radius: $radius-full;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, transparent 70%);
+  animation: rageGlow 1.2s ease-in-out infinite alternate;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 0.3;
+  }
+}
+
+@keyframes rageClickPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes rageGlow {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.3);
+  }
+}
+
+// ─── Workflow: horizontal bars ──────────────────────────
+.workflowVisual {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 160px;
+}
+
+.workflowBar {
+  height: 10px;
+  border-radius: 5px;
+  background: $primary-light;
+  width: calc(100% * var(--bar-width, 1));
+  animation: workflowSlide 2s ease-in-out infinite alternate;
+
+  &:nth-child(2) {
+    background: $primary;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes workflowSlide {
+  0% {
+    opacity: 0.5;
+    transform: translateX(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+}
