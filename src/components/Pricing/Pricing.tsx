@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useWaitlist } from '../../context/WaitlistContext';
 import styles from './Pricing.module.scss';
 
 interface PricingFeature {
@@ -102,6 +103,7 @@ const CrossIcon: React.FC = () => (
 );
 
 const Pricing: React.FC = () => {
+  const { openWaitlist } = useWaitlist();
   const sectionRef = useScrollReveal<HTMLElement>({ stagger: 0.12 });
 
   return (
@@ -156,6 +158,7 @@ const Pricing: React.FC = () => {
                   tier.featured ? styles.ctaPrimary : styles.ctaOutline
                 }
                 type="button"
+                onClick={tier.ctaText === 'Join Waitlist' ? openWaitlist : undefined}
               >
                 {tier.ctaText}
               </button>

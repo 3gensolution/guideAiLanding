@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useWaitlist } from '../../context/WaitlistContext';
 import styles from './Navbar.module.scss';
 
 const NAV_LINKS = ['Product', 'Solutions', 'Resources', 'Pricing'] as const;
 const SCROLL_THRESHOLD = 50;
 
 const Navbar: React.FC = () => {
+  const { openWaitlist } = useWaitlist();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -74,9 +76,9 @@ const Navbar: React.FC = () => {
 
           {/* Desktop actions */}
           <div className={styles.actions}>
-            <a href="#waitlist" className={styles.ctaButton}>
+            <button type="button" className={styles.ctaButton} onClick={openWaitlist}>
               Join Waitlist
-            </a>
+            </button>
           </div>
 
           {/* Hamburger button */}
@@ -114,13 +116,13 @@ const Navbar: React.FC = () => {
           ))}
         </ul>
         <div className={styles.mobileActions}>
-          <a
-            href="#waitlist"
+          <button
+            type="button"
             className={styles.mobileCta}
-            onClick={closeMobileMenu}
+            onClick={() => { closeMobileMenu(); openWaitlist(); }}
           >
             Join Waitlist
-          </a>
+          </button>
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { WaitlistProvider } from './context/WaitlistContext'
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import ProblemSection from './components/ProblemSection/ProblemSection'
@@ -11,6 +12,7 @@ import Integrations from './components/Integrations/Integrations'
 import Pricing from './components/Pricing/Pricing'
 import FinalCTA from './components/FinalCTA/FinalCTA'
 import Footer from './components/Footer/Footer'
+import WaitlistModal from './components/WaitlistModal/WaitlistModal'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,7 +22,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <WaitlistProvider>
       <Navbar />
       <main>
         <Hero />
@@ -34,7 +36,8 @@ function App() {
         <FinalCTA />
       </main>
       <Footer />
-    </>
+      <WaitlistModal />
+    </WaitlistProvider>
   )
 }
 

@@ -1,9 +1,11 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useWaitlist } from '../../context/WaitlistContext';
 import styles from './Hero.module.scss';
 
 function Hero() {
+  const { openWaitlist } = useWaitlist();
   const sectionRef = useScrollReveal<HTMLElement>({ stagger: 0.12 });
   const floatingRef = useRef<HTMLDivElement>(null);
 
@@ -65,9 +67,9 @@ function Hero() {
 
         {/* CTA Buttons */}
         <div className={`${styles.ctaGroup} reveal-item`}>
-          <a href="#waitlist" className={styles.ctaPrimary}>
+          <button type="button" className={styles.ctaPrimary} onClick={openWaitlist}>
             Join Waitlist <span aria-hidden="true">&rarr;</span>
-          </a>
+          </button>
           <a href="#demo" className={styles.ctaGhost}>
             View Demo
           </a>

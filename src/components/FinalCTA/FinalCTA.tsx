@@ -1,7 +1,9 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useWaitlist } from '../../context/WaitlistContext';
 import styles from './FinalCTA.module.scss';
 
 function FinalCTA() {
+  const { openWaitlist } = useWaitlist();
   const sectionRef = useScrollReveal<HTMLElement>({ stagger: 0.14 });
 
   return (
@@ -19,9 +21,9 @@ function FinalCTA() {
         </p>
 
         <div className={`${styles.ctaGroup} reveal-item`}>
-          <a href="#waitlist" className={styles.ctaPrimary}>
+          <button type="button" className={styles.ctaPrimary} onClick={openWaitlist}>
             Join the Waitlist
-          </a>
+          </button>
           <a href="#demo" className={styles.ctaGhost}>
             Book a Demo
           </a>

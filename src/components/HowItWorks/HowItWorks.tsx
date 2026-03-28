@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useWaitlist } from '../../context/WaitlistContext';
 import styles from './HowItWorks.module.scss';
 
 const CODE_SNIPPET = `<script>
@@ -7,6 +8,7 @@ const CODE_SNIPPET = `<script>
 </script>`;
 
 function HowItWorks() {
+  const { openWaitlist } = useWaitlist();
   const sectionRef = useScrollReveal<HTMLElement>({ stagger: 0.15 });
 
   return (
@@ -87,7 +89,7 @@ function HowItWorks() {
               Based on your UI structure, GuideAI generates semantic guides
               that understand context. If a button moves, the guide heals itself.
             </p>
-            <button type="button" className={styles.step3Button}>
+            <button type="button" className={styles.step3Button} onClick={openWaitlist}>
               Join Waitlist
             </button>
           </div>

@@ -1,0 +1,195 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ─── Backdrop ───────────────────────────────────────────
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  background: rgba($dark-bg, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-slow, visibility $transition-slow;
+}
+
+.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+// ─── Card ───────────────────────────────────────────────
+.card {
+  position: relative;
+  background: $card-bg;
+  border-radius: $radius-xl;
+  padding: $spacing-8 $spacing-6;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: $shadow-xl;
+  transform: translateY(12px) scale(0.97);
+  transition: transform $transition-slow;
+
+  .open & {
+    transform: translateY(0) scale(1);
+  }
+
+  @include md {
+    padding: $spacing-10 $spacing-8;
+  }
+}
+
+// ─── Close button ───────────────────────────────────────
+.closeBtn {
+  position: absolute;
+  top: $spacing-4;
+  right: $spacing-4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: $text-tertiary;
+  cursor: pointer;
+  border-radius: $radius-md;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $text-primary;
+    background: $light-surface;
+  }
+}
+
+// ─── Shared text ────────────────────────────────────────
+.heading {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: $spacing-2;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: $spacing-6;
+
+  @include md {
+    font-size: $font-size-base;
+  }
+}
+
+// ─── Form ───────────────────────────────────────────────
+.formContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup {
+  margin-bottom: $spacing-4;
+}
+
+.input {
+  width: 100%;
+  padding: $spacing-3 $spacing-4;
+  font-family: $font-family;
+  font-size: $font-size-base;
+  color: $text-primary;
+  background: $light-surface;
+  border: 1.5px solid $card-border;
+  border-radius: $radius-lg;
+  outline: none;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &::placeholder {
+    color: $text-tertiary;
+  }
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.12);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.inputError {
+  border-color: #ef4444;
+
+  &:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+  }
+}
+
+.error {
+  display: block;
+  font-size: $font-size-xs;
+  color: #ef4444;
+  margin-top: $spacing-1;
+  padding-left: $spacing-1;
+}
+
+.submitBtn {
+  @include button-base;
+  width: 100%;
+  padding: $spacing-3 $spacing-6;
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $text-on-dark;
+  background: $gradient-primary;
+  border-radius: $radius-lg;
+  transition: transform $transition-fast, box-shadow $transition-fast, opacity $transition-fast;
+
+  &:hover:not(:disabled) {
+    transform: scale(1.02);
+    box-shadow: $shadow-glow;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+// ─── Success ────────────────────────────────────────────
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successIcon {
+  color: #22c55e;
+  margin-bottom: $spacing-4;
+}
+
+.doneBtn {
+  @include button-base;
+  margin-top: $spacing-2;
+  padding: $spacing-3 $spacing-8;
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $text-primary;
+  background: $light-surface;
+  border: 1.5px solid $card-border;
+  border-radius: $radius-lg;
+  transition: background $transition-fast, border-color $transition-fast;
+
+  &:hover {
+    background: #f0f1f3;
+    border-color: #d1d5db;
+  }
+}
