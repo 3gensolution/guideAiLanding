@@ -22,7 +22,7 @@ function FinalCTA() {
 
         <div className={`${styles.ctaGroup} reveal-item`}>
           <button type="button" className={styles.ctaPrimary} onClick={openWaitlist}>
-            Join the Waitlist
+            Contact Us
           </button>
           <a href="#demo" className={styles.ctaGhost}>
             Book a Demo

@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
         <div className={styles.container}>
           {/* Logo */}
           <a href="/" className={styles.logo} aria-label="GuideAI Home">
-            <div className={styles.logoIcon} aria-hidden="true" />
+            <img src="/guide-logo.jpeg" alt="" className={styles.logoImage} aria-hidden="true" />
             <span className={styles.logoText}>
               Guide<span>AI</span>
             </span>
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
           {/* Desktop actions */}
           <div className={styles.actions}>
             <button type="button" className={styles.ctaButton} onClick={openWaitlist}>
-              Join Waitlist
+              Contact Us
             </button>
           </div>
 
@@ -121,7 +121,7 @@ const Navbar: React.FC = () => {
             className={styles.mobileCta}
             onClick={() => { closeMobileMenu(); openWaitlist(); }}
           >
-            Join Waitlist
+            Contact Us
           </button>
         </div>
       </div>

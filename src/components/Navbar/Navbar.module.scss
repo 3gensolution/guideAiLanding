@@ -50,23 +50,12 @@
   flex-shrink: 0;
 }
 
-.logoIcon {
+.logoImage {
   width: 32px;
   height: 32px;
-  background: $gradient-primary;
+  object-fit: cover;
   border-radius: $radius-md;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
-  &::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    background: $text-on-dark;
-    border-radius: $radius-full;
-  }
+  box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.08);
 }
 
 .logoText {

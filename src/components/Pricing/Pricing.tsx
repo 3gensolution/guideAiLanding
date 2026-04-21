@@ -30,7 +30,7 @@ const TIERS: PricingTier[] = [
       { text: 'Basic Analytics', included: true },
       { text: 'No Auto-Healing', included: false },
     ],
-    ctaText: 'Join Waitlist',
+    ctaText: 'Contact Us',
   },
   {
     label: 'Growth',
@@ -44,7 +44,7 @@ const TIERS: PricingTier[] = [
       { text: 'Auto-Healing Engine', included: true },
       { text: 'Slack Integration', included: true },
     ],
-    ctaText: 'Join Waitlist',
+    ctaText: 'Contact Us',
     featured: true,
     badge: 'MOST POPULAR',
   },
@@ -158,7 +158,7 @@ const Pricing: React.FC = () => {
                   tier.featured ? styles.ctaPrimary : styles.ctaOutline
                 }
                 type="button"
-                onClick={tier.ctaText === 'Join Waitlist' ? openWaitlist : undefined}
+                onClick={tier.ctaText === 'Contact Us' ? openWaitlist : undefined}
               >
                 {tier.ctaText}
               </button>

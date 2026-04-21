@@ -90,7 +90,7 @@ function HowItWorks() {
               that understand context. If a button moves, the guide heals itself.
             </p>
             <button type="button" className={styles.step3Button} onClick={openWaitlist}>
-              Join Waitlist
+              Contact Us
             </button>
           </div>
           <div className={styles.step3Visual} aria-hidden="true">

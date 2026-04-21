@@ -68,7 +68,7 @@ function Hero() {
         {/* CTA Buttons */}
         <div className={`${styles.ctaGroup} reveal-item`}>
           <button type="button" className={styles.ctaPrimary} onClick={openWaitlist}>
-            Join Waitlist <span aria-hidden="true">&rarr;</span>
+            Contact Us <span aria-hidden="true">&rarr;</span>
           </button>
           <a href="#demo" className={styles.ctaGhost}>
             View Demo
