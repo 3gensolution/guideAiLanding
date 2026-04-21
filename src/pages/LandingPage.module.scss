@@ -1,0 +1,447 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.page {
+  position: relative;
+  overflow: clip;
+  background:
+    radial-gradient(circle at top left, rgba($primary, 0.18), transparent 28%),
+    radial-gradient(circle at 85% 18%, rgba($accent, 0.16), transparent 24%),
+    linear-gradient(180deg, #f8fafc 0%, #ffffff 55%, #f7f3ff 100%);
+}
+
+.container {
+  @include container;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: $z-navbar;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-6;
+  padding-top: $spacing-4;
+  padding-bottom: $spacing-4;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-3;
+  color: $text-primary;
+}
+
+.brandMark {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: $gradient-primary;
+  box-shadow: 0 0 0 8px rgba($primary, 0.08);
+}
+
+.brandName {
+  font-size: $font-size-lg;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.navLinks {
+  display: none;
+  align-items: center;
+  gap: $spacing-6;
+  color: $text-secondary;
+
+  a {
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+
+  @include md {
+    display: flex;
+  }
+}
+
+.navButton,
+.primaryAction,
+.secondaryAction {
+  transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
+}
+
+.navButton,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-full;
+  padding: $spacing-3 $spacing-5;
+  font-weight: 600;
+}
+
+.navButton {
+  background: $gradient-primary;
+  color: $text-on-dark;
+  box-shadow: $shadow-md;
+}
+
+.hero {
+  position: relative;
+  padding: $spacing-20 0 $spacing-16;
+
+  @include lg {
+    padding: $spacing-24 0 $spacing-20;
+  }
+}
+
+.heroGlow {
+  position: absolute;
+  inset: -20% auto auto -12%;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba($primary, 0.2), transparent 62%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.heroGrid,
+.matterGrid {
+  display: grid;
+  gap: $spacing-8;
+
+  @include lg {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+  }
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 1;
+}
+
+.kicker {
+  display: inline-flex;
+  margin-bottom: $spacing-4;
+  color: $primary-dark;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 12ch;
+  font-size: clamp(3rem, 7vw, 5.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  color: $text-primary;
+}
+
+.subtitle {
+  max-width: 60ch;
+  margin-top: $spacing-6;
+  font-size: $font-size-lg;
+  line-height: 1.75;
+  color: $text-secondary;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-4;
+  margin-top: $spacing-8;
+}
+
+.primaryAction,
+.secondaryAction {
+  padding: $spacing-4 $spacing-6;
+}
+
+.primaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+  background: $gradient-primary;
+  color: $text-on-dark;
+  border-radius: $radius-full;
+  box-shadow: $shadow-glow;
+}
+
+.secondaryAction {
+  border: 1px solid rgba($primary, 0.18);
+  background: rgba(255, 255, 255, 0.68);
+  color: $text-primary;
+}
+
+.heroStats {
+  display: grid;
+  gap: $spacing-4;
+  margin-top: $spacing-8;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  div {
+    padding: $spacing-4 $spacing-5;
+    border-radius: $radius-xl;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(17, 24, 39, 0.06);
+    box-shadow: $shadow-sm;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: $spacing-1;
+    color: $text-primary;
+  }
+
+  span {
+    color: $text-secondary;
+    font-size: $font-size-sm;
+  }
+}
+
+.heroPanel {
+  padding: $spacing-6;
+  border-radius: $radius-2xl;
+  background: rgba(15, 11, 26, 0.92);
+  color: $text-on-dark;
+  box-shadow: $shadow-xl;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-5;
+  color: $text-on-dark-secondary;
+  font-size: $font-size-sm;
+}
+
+.panelBadge {
+  padding: $spacing-1 $spacing-3;
+  border-radius: $radius-full;
+  background: rgba(124, 58, 237, 0.22);
+  color: #c4b5fd;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.panelMetric {
+  padding: $spacing-4 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  strong {
+    display: block;
+    margin-bottom: $spacing-1;
+    font-size: $font-size-base;
+  }
+
+  span {
+    color: $text-on-dark-secondary;
+    line-height: 1.6;
+  }
+}
+
+.section,
+.sectionAlt,
+.ctaSection {
+  padding: $spacing-16 0;
+
+  @include lg {
+    padding: $spacing-20 0;
+  }
+}
+
+.footer {
+  padding: $spacing-8 0 $spacing-10;
+  text-align: center;
+  color: $text-tertiary;
+  font-size: $font-size-sm;
+}
+
+.sectionAlt {
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.04), rgba(236, 72, 153, 0.05));
+}
+
+.sectionHeader {
+  max-width: 46rem;
+  margin-bottom: $spacing-10;
+}
+
+.cardGrid,
+.useCaseGrid {
+  display: grid;
+  gap: $spacing-5;
+
+  @include md {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card,
+.metricCard,
+.useCaseCard,
+.insightPanel,
+.ctaPanel {
+  border-radius: $radius-2xl;
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: $shadow-lg;
+}
+
+.card {
+  padding: $spacing-6;
+
+  h3 {
+    margin-bottom: $spacing-3;
+    font-size: $font-size-xl;
+    line-height: 1.2;
+    color: $text-primary;
+  }
+
+  p {
+    color: $text-secondary;
+    line-height: 1.7;
+  }
+}
+
+.matterGrid {
+  @include lg {
+    grid-template-columns: 1fr 0.9fr;
+  }
+}
+
+.metricList {
+  display: grid;
+  gap: $spacing-5;
+}
+
+.metricCard {
+  padding: $spacing-5 $spacing-6;
+
+  strong {
+    display: block;
+    margin-bottom: $spacing-1;
+    font-size: $font-size-xl;
+    color: $text-primary;
+  }
+
+  span {
+    color: $text-secondary;
+  }
+}
+
+.insightPanel {
+  padding: $spacing-6;
+  background: rgba(15, 11, 26, 0.95);
+  color: $text-on-dark;
+
+  h3 {
+    margin-bottom: $spacing-4;
+    font-size: $font-size-2xl;
+  }
+
+  ul {
+    display: grid;
+    gap: $spacing-4;
+  }
+
+  li {
+    padding-left: $spacing-5;
+    position: relative;
+    color: $text-on-dark-secondary;
+    line-height: 1.7;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: $accent;
+    }
+  }
+}
+
+.useCaseGrid {
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.useCaseCard {
+  padding: $spacing-6;
+  min-height: 11rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  p {
+    font-size: $font-size-lg;
+    color: $text-primary;
+    line-height: 1.55;
+  }
+}
+
+.useCaseIndex {
+  color: $primary;
+  font-size: $font-size-xs;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.ctaPanel {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at top right, rgba($primary, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(247, 243, 255, 0.95));
+  text-align: center;
+
+  h2 {
+    max-width: 18ch;
+    margin: 0 auto $spacing-4;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: $text-primary;
+  }
+
+  p {
+    max-width: 56ch;
+    margin: 0 auto $spacing-6;
+    color: $text-secondary;
+    font-size: $font-size-lg;
+    line-height: 1.75;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page,
+  .navButton,
+  .primaryAction,
+  .secondaryAction {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,184 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  padding: $spacing-8 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba($primary, 0.18), transparent 28%),
+    radial-gradient(circle at 90% 10%, rgba($accent, 0.14), transparent 26%),
+    linear-gradient(180deg, #0f0b1a 0%, #1b1028 100%);
+  color: $text-on-dark;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 40%);
+  pointer-events: none;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  @include container;
+  min-height: calc(100vh - 4rem);
+  display: grid;
+  align-items: center;
+  gap: $spacing-10;
+
+  @include lg {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+}
+
+.copy {
+  max-width: 42rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-3;
+  color: $text-on-dark;
+  margin-bottom: $spacing-8;
+}
+
+.brandMark {
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 9999px;
+  background: $gradient-primary;
+  box-shadow: 0 0 0 8px rgba($primary, 0.12);
+}
+
+.kicker {
+  display: inline-flex;
+  margin-bottom: $spacing-4;
+  color: #c4b5fd;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+.subtitle {
+  margin-top: $spacing-6;
+  color: $text-on-dark-secondary;
+  font-size: $font-size-lg;
+  line-height: 1.75;
+  max-width: 44rem;
+}
+
+.benefits {
+  display: grid;
+  gap: $spacing-4;
+  margin-top: $spacing-8;
+
+  li {
+    position: relative;
+    padding-left: $spacing-5;
+    color: $text-on-dark-secondary;
+    line-height: 1.6;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: $accent;
+    }
+  }
+}
+
+.card {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: $radius-2xl;
+  background: rgba(255, 255, 255, 0.96);
+  color: $text-primary;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.cardLabel {
+  display: inline-flex;
+  margin-bottom: $spacing-4;
+  color: $primary;
+  font-size: $font-size-xs;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.card h2 {
+  font-size: $font-size-3xl;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.card p {
+  margin-top: $spacing-3;
+  color: $text-secondary;
+  line-height: 1.7;
+}
+
+.field {
+  display: grid;
+  gap: $spacing-2;
+  margin-top: $spacing-6;
+
+  span {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  input {
+    width: 100%;
+    padding: $spacing-4 $spacing-4;
+    border-radius: $radius-xl;
+    border: 1px solid rgba(17, 24, 39, 0.1);
+    background: #fff;
+    color: $text-primary;
+    outline: none;
+
+    &:focus {
+      border-color: rgba($primary, 0.45);
+      box-shadow: 0 0 0 4px rgba($primary, 0.12);
+    }
+  }
+}
+
+.error {
+  margin-top: $spacing-3;
+  color: #b91c1c;
+  font-size: $font-size-sm;
+}
+
+.submit {
+  width: 100%;
+  margin-top: $spacing-6;
+  padding: $spacing-4 $spacing-5;
+  border-radius: $radius-full;
+  background: $gradient-primary;
+  color: $text-on-dark;
+  font-weight: 700;
+  box-shadow: $shadow-glow;
+}
+
+.backLink {
+  display: inline-flex;
+  margin-top: $spacing-4;
+  color: $text-secondary;
+  font-size: $font-size-sm;
+}
+

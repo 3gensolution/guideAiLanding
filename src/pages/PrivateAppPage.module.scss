@@ -1,0 +1,239 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  background: #f6f7fb;
+
+  @include lg {
+    grid-template-columns: 18rem minmax(0, 1fr);
+  }
+}
+
+.sidebar {
+  padding: $spacing-6;
+  background: linear-gradient(180deg, #0f0b1a 0%, #151021 100%);
+  color: $text-on-dark;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-3;
+  color: $text-on-dark;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.brandMark {
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  background: $gradient-primary;
+}
+
+.nav {
+  display: grid;
+  gap: $spacing-3;
+}
+
+.navItem,
+.signOut,
+.headerButton {
+  border-radius: $radius-full;
+  padding: $spacing-3 $spacing-4;
+  font-weight: 700;
+}
+
+.navItem {
+  text-align: left;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.navItemActive {
+  color: $text-on-dark;
+  background: rgba(124, 58, 237, 0.2);
+}
+
+.signOut {
+  margin-top: auto;
+  color: $text-on-dark;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.content {
+  padding: $spacing-6;
+
+  @include lg {
+    padding: $spacing-10;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  margin-bottom: $spacing-8;
+
+  @include md {
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: $text-primary;
+  }
+
+  p {
+    max-width: 48rem;
+    margin-top: $spacing-3;
+    color: $text-secondary;
+    line-height: 1.7;
+  }
+}
+
+.kicker {
+  display: inline-flex;
+  margin-bottom: $spacing-3;
+  color: $primary;
+  font-size: $font-size-xs;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.headerButton {
+  background: $gradient-primary;
+  color: $text-on-dark;
+  box-shadow: $shadow-glow;
+}
+
+.metricGrid {
+  display: grid;
+  gap: $spacing-5;
+  margin-bottom: $spacing-8;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include xl {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.metricCard,
+.panel,
+.previewPanel {
+  padding: $spacing-6;
+  border-radius: $radius-2xl;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  box-shadow: $shadow-lg;
+}
+
+.metricCard {
+  span {
+    display: block;
+    color: $text-tertiary;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-2;
+  }
+
+  strong {
+    display: block;
+    font-size: $font-size-4xl;
+    line-height: 1;
+    color: $text-primary;
+  }
+
+  p {
+    margin-top: $spacing-3;
+    color: $text-secondary;
+    line-height: 1.6;
+  }
+}
+
+.doubleGrid,
+.appGrid {
+  display: grid;
+  gap: $spacing-5;
+
+  @include lg {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.panel h2,
+.previewPanel h2 {
+  margin-bottom: $spacing-4;
+  font-size: $font-size-2xl;
+  color: $text-primary;
+}
+
+.list {
+  display: grid;
+  gap: $spacing-4;
+
+  li {
+    color: $text-secondary;
+    line-height: 1.7;
+    padding-left: $spacing-5;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: $primary;
+    }
+  }
+}
+
+.previewPanel {
+  background:
+    radial-gradient(circle at top right, rgba($primary, 0.1), transparent 30%),
+    rgba(255, 255, 255, 0.95);
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-5;
+  color: $text-secondary;
+  font-size: $font-size-sm;
+}
+
+.previewStep {
+  padding: $spacing-4 0;
+  border-top: 1px solid rgba(17, 24, 39, 0.08);
+
+  strong {
+    display: block;
+    margin-bottom: $spacing-1;
+    color: $primary-dark;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: $font-size-xs;
+  }
+
+  p {
+    color: $text-secondary;
+    line-height: 1.65;
+  }
+}
+
