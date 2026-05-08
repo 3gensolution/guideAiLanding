@@ -84,7 +84,7 @@ function LandingPage() {
               <div className={`${styles.heroCopy} ${styles.heroCentered}`}>
                 <p className={`${styles.pill} reveal-item`}>
                   <span className={styles.dot} aria-hidden="true" />
-                  <span>Relaunching soon. Early access is open.</span>
+                  <span>We are live. Early access is open.</span>
                 </p>
 
                 <h1 className="reveal-item">Understand friction. Ship guidance. Measure activation.</h1>
