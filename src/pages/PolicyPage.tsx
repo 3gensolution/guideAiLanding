@@ -2,10 +2,6 @@ import { useEffect } from 'react'
 import { useWaitlist } from '../context/WaitlistContext'
 import styles from './PolicyPage.module.scss'
 
-interface PolicyPageProps {
-  onNavigate?: (path: string) => void
-}
-
 function ArrowIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -20,7 +16,7 @@ function ArrowIcon() {
   )
 }
 
-export default function PolicyPage({ onNavigate }: PolicyPageProps) {
+export default function PolicyPage() {
   const { openWaitlist } = useWaitlist()
 
   useEffect(() => {

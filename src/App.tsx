@@ -28,7 +28,7 @@ function App() {
       {pathname === '/v2' ? (
         <V2LandingPage onNavigate={navigate} />
       ) : pathname === '/policy' ? (
-        <PolicyPage onNavigate={navigate} />
+        <PolicyPage />
       ) : (
         <LandingPage />
       )}
