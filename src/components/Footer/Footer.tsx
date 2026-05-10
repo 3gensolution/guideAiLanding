@@ -1,6 +1,10 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import styles from './Footer.module.scss';
 
+interface FooterProps {
+  onNavigate?: (path: string) => void;
+}
+
 const FOOTER_LINKS = {
   product: {
     heading: 'PRODUCT',
@@ -29,7 +33,7 @@ const FOOTER_LINKS = {
   },
 } as const;
 
-function Footer() {
+function Footer({ onNavigate }: FooterProps) {
   const footerRef = useScrollReveal<HTMLElement>({ stagger: 0.08, y: 20 });
 
   return (
@@ -75,7 +79,16 @@ function Footer() {
             &copy; 2024 GuideAI, Inc. All rights reserved.
           </p>
           <div className={styles.legalLinks}>
-            <a href="#privacy" className={styles.legalLink}>
+            <a 
+              href="/policy" 
+              className={styles.legalLink}
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('/policy');
+                }
+              }}
+            >
               Privacy Policy
             </a>
             <span className={styles.legalSeparator} aria-hidden="true">
