@@ -1,0 +1,165 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+
+export function HeroSection() {
+  const [openVideo, setOpenVideo] = useState(false);
+
+  return (
+    <section className="relative min-h-screen overflow-hidden bg-zinc-950">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/hero-mountains.jpg"
+          alt="Mountain landscape"
+          fill
+          className="object-cover object-center opacity-60"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/60 to-zinc-950" />
+      </div>
+
+      {/* Content */}
+      <div className="relative mx-auto max-w-[1440px] px-6 pb-24 pt-32 lg:px-8 lg:pt-40">
+        {/* Announcement Badge */}
+        <div className="mb-8 flex justify-center">
+          <Link
+            href="#"
+            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-white/80 backdrop-blur-sm transition hover:bg-white/20"
+          >
+            <span className="rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-2 py-0.5 text-xs font-semibold text-white">
+              NEW
+            </span>
+            GUIDEAI LAUNCHES BROWSER COPILOT FOR TASK COMPLETION
+          </Link>
+        </div>
+
+        {/* Main Heading */}
+        <div className="mx-auto max-w-4xl text-center">
+          <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+              Build guides in minutes.
+            </span>
+            <br />
+            <span className="text-white/90">
+              Keep them current automatically.
+            </span>
+          </h1>
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/70">
+            AI-first product adoption platform for B2B SaaS
+          </p>
+
+          <div className="mt-10 flex items-center justify-center gap-4">
+            <Button
+              size="lg"
+              className="bg-white px-8 text-zinc-900 hover:bg-white/90"
+            >
+              Talk to us
+            </Button>
+          </div>
+        </div>
+
+        {/* <div className="relative mt-20 flex justify-center overflow-visible">
+          <motion.div
+            initial={{ x: -120, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+            className="relative"
+          >
+            {!openVideo ? (
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setOpenVideo(true)}
+                className="group relative flex w-[320px] items-center gap-4 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition"
+              >
+                <div className="relative h-20 w-32 overflow-hidden rounded-2xl">
+                  <Image
+                    src="/video-thumbnail.jpg"
+                    alt="Video preview"
+                    fill
+                    className="object-cover"
+                  />
+
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-lg transition group-hover:scale-110">
+                      <svg
+                        className="ml-1 h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-left">
+                  <p className="text-sm font-medium text-white">
+                    See GuideAI in action
+                  </p>
+
+                  <p className="mt-1 text-xs text-white/60">
+                    Watch demo • 2 mins
+                  </p>
+                </div>
+              </motion.button>
+            ) : (
+              <AnimatePresence>
+                <motion.div
+                  initial={{
+                    width: 250,
+                    opacity: 0,
+                    x: -40,
+                  }}
+                  animate={{
+                    width:
+                      typeof window !== "undefined" &&
+                      window.innerWidth >= 1024
+                        ? 500
+                        : 250,
+                    height: 280,
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.95,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeInOut",
+                  }}
+                  className="relative overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
+                >
+                  <button
+                    onClick={() => setOpenVideo(false)}
+                    className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur hover:bg-black"
+                  >
+                    ✕
+                  </button>
+
+                  <video
+                    controls
+                    autoPlay
+                    className="h-full w-full"
+                  >
+                    <source src="/demo-video.mp4" type="video/mp4" />
+                  </video>
+                </motion.div>
+              </AnimatePresence>
+            )}
+          </motion.div>
+        </div> */}
+      </div>
+    </section>
+  );
+}
